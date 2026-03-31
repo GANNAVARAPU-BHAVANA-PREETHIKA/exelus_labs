@@ -1,41 +1,86 @@
-import React, { useState, useEffect, useContext, useRef } from 'react';
+import React, { useState, useRef, useEffect, useContext } from 'react';
+>>>>>>> 347ae7686bb7afb4a71171b2b0c0cccd23ed3267
+=======
+import React, { useState, useRef, useEffect, useContext } from 'react';
+=======
+import React, { useState, useRef, useEffect, useContext } from 'react';
+>>>>>>> 347ae7686bb7afb4a71171b2b0c0cccd23ed3267
 import './Navbar.css';
 import logo from '../../assets/chem.png';
 import { Link, useNavigate } from 'react-router-dom';
 import { ProductContext } from '../../context/ProductContext';
 
 const Navbar = () => {
-  const [isDropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
   const [searchTerm, setSearchTerm] = useState('');
   const { products } = useContext(ProductContext);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [isMobileNav, setIsMobileNav] = useState(() => window.innerWidth <= 1024);
-  const dropdownRef = useRef(null);
+  const [closeTimeout, setCloseTimeout] = useState(null);
 
   const navigate = useNavigate();
 
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-  };
-
-  const closeMenu = () => {
-    setMenuOpen(false);
-  };
-
-  const openDropdown = () => {
+  const toggleDropdown = () => {
+    if (closeTimeout) clearTimeout(closeTimeout);
     setDropdownOpen(true);
   };
 
   const closeDropdown = () => {
-    setDropdownOpen(false);
+    const timeout = setTimeout(() => setDropdownOpen(false), 2000);
+    setCloseTimeout(timeout);
   };
+>>>>>>> 347ae7686bb7afb4a71171b2b0c0cccd23ed3267
+=======
+  const [isDropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
+  const [searchTerm, setSearchTerm] = useState('');
+  const { products } = useContext(ProductContext);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [closeTimeout, setCloseTimeout] = useState(null);
+
+  const navigate = useNavigate();
 
   const toggleDropdown = () => {
-    if (isMobileNav) {
-      setDropdownOpen((current) => !current);
-    }
+    if (closeTimeout) clearTimeout(closeTimeout);
+    setDropdownOpen(true);
   };
 
+  const closeDropdown = () => {
+    const timeout = setTimeout(() => setDropdownOpen(false), 2000);
+    setCloseTimeout(timeout);
+  };
+
+=======
+  const dropdownRef = useRef(null);
+  const [searchTerm, setSearchTerm] = useState('');
+  const { products } = useContext(ProductContext);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [closeTimeout, setCloseTimeout] = useState(null);
+
+  const navigate = useNavigate();
+
+  const toggleDropdown = () => {
+    if (closeTimeout) clearTimeout(closeTimeout);
+    setDropdownOpen(true);
+  };
+
+  const closeDropdown = () => {
+    const timeout = setTimeout(() => setDropdownOpen(false), 2000);
+    setCloseTimeout(timeout);
+  };
+
+>>>>>>> 347ae7686bb7afb4a71171b2b0c0cccd23ed3267
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
+>>>>>>> 347ae7686bb7afb4a71171b2b0c0cccd23ed3267
+=======
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
+
+=======
+>>>>>>> 347ae7686bb7afb4a71171b2b0c0cccd23ed3267
   const handleSearch = (event) => {
     if (event.key === 'Enter' || event.type === 'click') {
       const search = searchTerm.toLowerCase().trim();
@@ -59,24 +104,62 @@ const Navbar = () => {
     }
   };
 
-  const handleMenuItemClick = () => {
-    closeDropdown();
+    if (closeTimeout) clearTimeout(closeTimeout);
     closeMenu();
+    setDropdownOpen(false);
   };
 
   useEffect(() => {
-    const handleClickOutside = (event) => {
+    function handleClickOutside(event) {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         closeDropdown();
       }
-    };
-
+    }
     document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+>>>>>>> 347ae7686bb7afb4a71171b2b0c0cccd23ed3267
+=======
+  const handleMenuItemClick = () => {
+    if (closeTimeout) clearTimeout(closeTimeout);
+    closeMenu();
+    setDropdownOpen(false);
+  };
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        closeDropdown();
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+=======
+    if (closeTimeout) clearTimeout(closeTimeout);
+    closeMenu();
+    setDropdownOpen(false);
+  };
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        closeDropdown();
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+>>>>>>> 347ae7686bb7afb4a71171b2b0c0cccd23ed3267
   }, []);
 
   useEffect(() => {
     const handleResize = () => {
+<<<<<<< HEAD
       const mobile = window.innerWidth <= 1024;
       setIsMobileNav(mobile);
 
@@ -85,6 +168,11 @@ const Navbar = () => {
       }
 
       setDropdownOpen(false);
+=======
+      if (window.innerWidth > 1024) {
+        setMenuOpen(false);
+      }
+>>>>>>> 347ae7686bb7afb4a71171b2b0c0cccd23ed3267
     };
 
     window.addEventListener('resize', handleResize);
@@ -167,6 +255,7 @@ const Navbar = () => {
               Products
             </Link>
           </li>
+<<<<<<< HEAD
           <li
             className="dropdown"
             ref={dropdownRef}
@@ -188,6 +277,21 @@ const Navbar = () => {
             </button>
             {isDropdownOpen && (
               <ul className="dropdown-content">
+=======
+          <li className="dropdown" ref={dropdownRef} onMouseLeave={closeDropdown}>
+            <span className="dropdown-toggle" onMouseEnter={toggleDropdown}>
+              Services
+            </span>
+            {isDropdownOpen && (
+              <ul className="dropdown-content" onMouseEnter={toggleDropdown}>
+                <li>
+                  <Link to="/services" onClick={handleMenuItemClick}>
+                    Custom Synthesis
+                  </Link>
+                </li>
+              </ul>
+            )}
+          </li>
                 <li>
                   <Link to="/services" onClick={handleMenuItemClick}>
                     Custom Synthesis

@@ -10,8 +10,14 @@
 ======================== */
 .slideshow-container {
   width: 100%;
+<<<<<<< HEAD
   height: clamp(320px, 80vh, 760px);
   min-height: 400px;
+=======
+  height: 80vh;
+  min-height: 400px;
+
+>>>>>>> 347ae7686bb7afb4a71171b2b0c0cccd23ed3267
   overflow: hidden;
   position: relative;
   background: #000;
@@ -31,11 +37,21 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+<<<<<<< HEAD
   object-position: center center;
 }
 
 .slide:nth-child(2) img.full-slide {
   object-position: center 32%;
+=======
+}
+
+.slide:nth-child(2) img.full-slide {
+  object-fit: contain;
+  object-position: center center;
+  transform: scaleX(1.58);
+  transform-origin: center center;
+>>>>>>> 347ae7686bb7afb4a71171b2b0c0cccd23ed3267
 }
 
 .slide.active {
@@ -58,7 +74,10 @@
   cursor: pointer;
   transition: background-color 0.3s ease;
   z-index: 10;
+<<<<<<< HEAD
   white-space: nowrap;
+=======
+>>>>>>> 347ae7686bb7afb4a71171b2b0c0cccd23ed3267
 }
 
 .explore-btn:hover {
@@ -201,8 +220,11 @@
   scroll-behavior: smooth;
   width: 100%;
   max-width: 1200px;
+<<<<<<< HEAD
   -webkit-overflow-scrolling: touch;
   scrollbar-width: thin;
+=======
+>>>>>>> 347ae7686bb7afb4a71171b2b0c0cccd23ed3267
 }
 
 .products {
@@ -211,7 +233,10 @@
   padding: 20px;
   min-width: max-content;
   align-items: stretch;
+<<<<<<< HEAD
   scroll-snap-type: x proximity;
+=======
+>>>>>>> 347ae7686bb7afb4a71171b2b0c0cccd23ed3267
 }
 
 .product-card {
@@ -229,7 +254,10 @@
   align-items: center;
   padding: 20px;
   transition: transform 0.3s ease;
+<<<<<<< HEAD
   scroll-snap-align: start;
+=======
+>>>>>>> 347ae7686bb7afb4a71171b2b0c0cccd23ed3267
 }
 
 .products .product-card {
@@ -463,8 +491,12 @@
 
 @media (max-width: 768px) {
   .slideshow-container {
+<<<<<<< HEAD
     height: clamp(280px, 48vh, 440px);
     min-height: 280px;
+=======
+    height: 40vh;
+>>>>>>> 347ae7686bb7afb4a71171b2b0c0cccd23ed3267
   }
 
   .slide img.full-slide {
@@ -475,10 +507,13 @@
     font-size: 1.8rem;
   }
 
+<<<<<<< HEAD
   .section {
     padding: 48px 24px;
   }
 
+=======
+>>>>>>> 347ae7686bb7afb4a71171b2b0c0cccd23ed3267
   .about-section {
     padding: 48px 24px;
   }
@@ -513,7 +548,10 @@
   .product-details td {
     font-size: 0.85rem;
     max-width: 140px;
+<<<<<<< HEAD
     white-space: normal;
+=======
+>>>>>>> 347ae7686bb7afb4a71171b2b0c0cccd23ed3267
   }
 
   .btn {
@@ -549,6 +587,7 @@
 
 /* Ultra small devices */
 @media (max-width: 480px) {
+<<<<<<< HEAD
   .slideshow-container {
     height: clamp(240px, 38vh, 320px);
     min-height: 240px;
@@ -560,10 +599,13 @@
     font-size: 0.95rem;
   }
 
+=======
+>>>>>>> 347ae7686bb7afb4a71171b2b0c0cccd23ed3267
   .section {
     padding: 40px 20px;
   }
 
+<<<<<<< HEAD
   .products-carousel {
     padding: 0 20px;
   }
@@ -576,6 +618,10 @@
   .product-details td {
     font-size: 0.75rem;
     white-space: normal;
+=======
+  .product-details td {
+    font-size: 0.75rem;
+>>>>>>> 347ae7686bb7afb4a71171b2b0c0cccd23ed3267
   }
 
   .btn {

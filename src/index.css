@@ -1,5 +1,6 @@
 html {
   font-size: 110%;
+<<<<<<< HEAD
   overflow-x: hidden;
 }
 
@@ -7,11 +8,16 @@ html {
 *::before,
 *::after {
   box-sizing: border-box;
+=======
+>>>>>>> 347ae7686bb7afb4a71171b2b0c0cccd23ed3267
 }
 
 body {
   margin: 0;
+<<<<<<< HEAD
   overflow-x: hidden;
+=======
+>>>>>>> 347ae7686bb7afb4a71171b2b0c0cccd23ed3267
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -19,6 +25,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+<<<<<<< HEAD
 img,
 svg,
 video,
@@ -26,6 +33,8 @@ canvas {
   max-width: 100%;
 }
 
+=======
+>>>>>>> 347ae7686bb7afb4a71171b2b0c0cccd23ed3267
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
