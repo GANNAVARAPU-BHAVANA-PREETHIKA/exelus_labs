@@ -1,0 +1,380 @@
+/* ============================
+   Page Root
+============================ */
+.au-page {
+  font-family: 'Segoe UI', sans-serif;
+  background: #f4f7fb;
+}
+
+/* ============================
+   Hero Banner
+============================ */
+.au-hero {
+  background: linear-gradient(135deg, #1a3af5 0%, #0e1c8a 55%, #091162 100%);
+  padding: 72px 40px 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.au-hero::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background: #f4f7fb;
+  clip-path: ellipse(55% 100% at 50% 100%);
+}
+
+.au-hero-inner {
+  position: relative;
+  z-index: 1;
+}
+
+.au-hero-sub {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.72);
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.au-hero-title {
+  font-size: 3.2rem;
+  font-weight: 800;
+  color: #fff;
+  margin: 0 0 18px 0;
+  letter-spacing: -1px;
+  line-height: 1.1;
+}
+
+.au-hero-desc {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.82);
+  max-width: 620px;
+  margin: 0 auto;
+  line-height: 1.75;
+}
+
+/* ============================
+   Shared Section Styles
+============================ */
+.au-section {
+  padding: 56px 40px;
+}
+
+.au-section-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.au-section-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #111;
+  margin: 0 0 36px 0;
+  text-align: center;
+  position: relative;
+}
+
+.au-section-title::after {
+  content: '';
+  display: block;
+  width: 56px;
+  height: 4px;
+  background: #1a3af5;
+  border-radius: 2px;
+  margin: 12px auto 0;
+}
+
+.au-light-title {
+  color: #fff;
+}
+
+.au-light-title::after {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+/* ============================
+   Who We Are — Intro Section
+============================ */
+.au-intro-section {
+  background: #f4f7fb;
+  padding-top: 48px;
+  padding-bottom: 0;
+}
+
+.au-intro-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+.au-intro-text {
+  flex: 1;
+}
+
+.au-intro-text h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #111;
+  margin: 0 0 20px 0;
+  position: relative;
+}
+
+.au-intro-text h2::after {
+  content: '';
+  display: block;
+  width: 56px;
+  height: 4px;
+  background: #1a3af5;
+  border-radius: 2px;
+  margin-top: 10px;
+}
+
+.au-intro-text p {
+  font-size: 1.05rem;
+  color: #444;
+  line-height: 1.8;
+  margin-bottom: 14px;
+}
+
+/* Stats grid */
+.au-stat-grid {
+  flex: 0 0 320px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.au-stat-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 24px 20px;
+  text-align: center;
+  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.07);
+  border-top: 4px solid #1a3af5;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.au-stat-num {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #1a3af5;
+  line-height: 1;
+}
+
+.au-stat-label {
+  font-size: 0.8rem;
+  color: #666;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+/* ============================
+   What We Do — Dark Section
+============================ */
+.au-dark-section {
+  background: linear-gradient(135deg, #0e1c8a 0%, #1a3af5 100%);
+  margin-top: 48px;
+}
+
+.au-cards-row {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.au-card {
+  flex: 1 1 280px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 14px;
+  padding: 30px 28px;
+  color: #fff;
+  backdrop-filter: blur(4px);
+  transition: background 0.2s;
+}
+
+.au-card:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.au-card h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0 0 14px 0;
+  color: #fff;
+}
+
+.au-card p {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.88);
+  line-height: 1.75;
+  margin: 0;
+}
+
+/* ============================
+   Why Choose Us
+============================ */
+.au-why-section {
+  background: #f4f7fb;
+  padding-bottom: 0;
+}
+
+.au-three-col {
+  justify-content: center;
+}
+
+.au-info-card {
+  flex: 1 1 260px;
+  max-width: 360px;
+  background: #fff;
+  border-radius: 14px;
+  padding: 26px 26px;
+  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.06);
+  border-left: 5px solid #1a3af5;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.au-info-card:hover {
+  box-shadow: 0 6px 22px rgba(26, 58, 245, 0.13);
+  transform: translateY(-3px);
+}
+
+.au-card-label {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #1a3af5;
+  margin-bottom: 10px;
+}
+
+.au-info-card h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #111;
+  margin: 0 0 12px 0;
+}
+
+.au-info-card p {
+  font-size: 0.97rem;
+  color: #444;
+  line-height: 1.72;
+  margin: 0;
+}
+
+/* ============================
+   Footer Banner
+============================ */
+.au-footer-banner {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-top: 48px;
+}
+
+.au-footer-overlay {
+  background: rgba(9, 17, 98, 0.78);
+  padding: 64px 60px;
+  text-align: center;
+}
+
+.au-footer-overlay h2 {
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: #fff;
+  margin: 0 0 20px 0;
+  line-height: 1.3;
+}
+
+.au-footer-overlay p {
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.88);
+  margin: 0 auto 14px;
+  max-width: 740px;
+  line-height: 1.8;
+}
+
+.au-tagline {
+  font-size: 1.15rem !important;
+  font-weight: 700;
+  color: #7eb3ff !important;
+  margin-top: 10px;
+  letter-spacing: 0.5px;
+}
+
+/* ============================
+   Responsive
+============================ */
+@media (max-width: 900px) {
+  .au-intro-grid {
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .au-stat-grid {
+    flex: none;
+    width: 100%;
+  }
+
+  .au-section {
+    padding: 44px 24px;
+  }
+
+  .au-dark-section {
+    margin-top: 32px;
+  }
+
+  .au-footer-banner {
+    margin-top: 32px;
+  }
+
+  .au-footer-overlay {
+    padding: 44px 28px;
+  }
+}
+
+@media (max-width: 600px) {
+  .au-hero {
+    padding: 52px 24px 68px;
+  }
+
+  .au-hero-title {
+    font-size: 2.2rem;
+  }
+
+  .au-hero-desc {
+    font-size: 0.97rem;
+  }
+
+  .au-section-title {
+    font-size: 1.65rem;
+  }
+
+  .au-stat-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .au-cards-row {
+    flex-direction: column;
+  }
+
+  .au-info-card {
+    max-width: 100%;
+  }
+
+  .au-footer-overlay h2 {
+    font-size: 1.4rem;
+  }
+}
