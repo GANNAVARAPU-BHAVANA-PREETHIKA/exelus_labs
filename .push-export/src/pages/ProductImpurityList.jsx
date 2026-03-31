@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { fetchBrowseProducts, getBrowseLetterKey, isSupabaseConfigured } from '../services/productService';
+import { fetchBrowseProducts, isSupabaseConfigured } from '../services/productService';
 import './ProductList.css';
 
 const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');

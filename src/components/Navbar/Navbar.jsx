@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useRef } from 'react';
 import './Navbar.css';
 import logo from '../../assets/chem.png';
 import { Link, useNavigate } from 'react-router-dom';
@@ -6,23 +6,13 @@ import { ProductContext } from '../../context/ProductContext';
 
 const Navbar = () => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
-  const dropdownRef = useRef(null);
   const [searchTerm, setSearchTerm] = useState('');
   const { products } = useContext(ProductContext);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [closeTimeout, setCloseTimeout] = useState(null);
+  const [isMobileNav, setIsMobileNav] = useState(() => window.innerWidth <= 1024);
+  const dropdownRef = useRef(null);
 
   const navigate = useNavigate();
-
-  const toggleDropdown = () => {
-    if (closeTimeout) clearTimeout(closeTimeout);
-    setDropdownOpen(true);
-  };
-
-  const closeDropdown = () => {
-    const timeout = setTimeout(() => setDropdownOpen(false), 2000);
-    setCloseTimeout(timeout);
-  };
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -30,6 +20,20 @@ const Navbar = () => {
 
   const closeMenu = () => {
     setMenuOpen(false);
+  };
+
+  const openDropdown = () => {
+    setDropdownOpen(true);
+  };
+
+  const closeDropdown = () => {
+    setDropdownOpen(false);
+  };
+
+  const toggleDropdown = () => {
+    if (isMobileNav) {
+      setDropdownOpen((current) => !current);
+    }
   };
 
   const handleSearch = (event) => {
@@ -56,28 +60,31 @@ const Navbar = () => {
   };
 
   const handleMenuItemClick = () => {
-    if (closeTimeout) clearTimeout(closeTimeout);
+    closeDropdown();
     closeMenu();
-    setDropdownOpen(false);
   };
 
   useEffect(() => {
-    function handleClickOutside(event) {
+    const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         closeDropdown();
       }
-    }
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
     };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth > 1024) {
+      const mobile = window.innerWidth <= 1024;
+      setIsMobileNav(mobile);
+
+      if (!mobile) {
         setMenuOpen(false);
       }
+
+      setDropdownOpen(false);
     };
 
     window.addEventListener('resize', handleResize);
@@ -160,12 +167,27 @@ const Navbar = () => {
               Products
             </Link>
           </li>
-          <li className="dropdown" ref={dropdownRef} onMouseLeave={closeDropdown}>
-            <span className="dropdown-toggle" onMouseEnter={toggleDropdown}>
+          <li
+            className="dropdown"
+            ref={dropdownRef}
+            onMouseEnter={() => {
+              if (!isMobileNav) openDropdown();
+            }}
+            onMouseLeave={() => {
+              if (!isMobileNav) closeDropdown();
+            }}
+          >
+            <button
+              type="button"
+              className="dropdown-toggle"
+              onClick={toggleDropdown}
+              aria-expanded={isDropdownOpen}
+              aria-haspopup="true"
+            >
               Services
-            </span>
+            </button>
             {isDropdownOpen && (
-              <ul className="dropdown-content" onMouseEnter={toggleDropdown}>
+              <ul className="dropdown-content">
                 <li>
                   <Link to="/services" onClick={handleMenuItemClick}>
                     Custom Synthesis
