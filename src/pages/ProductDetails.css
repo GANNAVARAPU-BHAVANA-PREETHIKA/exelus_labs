@@ -1,0 +1,492 @@
+/* ============================
+   Not Found
+============================ */
+.pd-not-found {
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.pd-not-found a {
+  color: #007bff;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+/* ============================
+   Page Wrapper
+============================ */
+.pd-wrapper {
+  --pd-brand: #007bff;
+  --pd-brand-dark: #0056b3;
+  --pd-brand-soft: #cee0fa;
+  --pd-brand-mist: #f0f7ff;
+  --pd-brand-ink: #123c87;
+  background:
+    radial-gradient(circle at top left, rgba(0, 123, 255, 0.15), transparent 28%),
+    linear-gradient(180deg, #f7fbff 0%, #eef5ff 100%);
+  min-height: 100vh;
+  padding-bottom: 3rem;
+}
+
+/* ============================
+   Breadcrumb
+============================ */
+.pd-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 3rem;
+  font-size: 0.9rem;
+  color: #5c6478;
+  background: rgba(255, 255, 255, 0.92);
+  border-bottom: 2px solid rgba(0, 123, 255, 0.14);
+  backdrop-filter: blur(10px);
+}
+
+.pd-breadcrumb a {
+  color: var(--pd-brand);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.pd-breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.pd-breadcrumb span {
+  color: #aaa;
+}
+
+.pd-bread-current {
+  color: var(--pd-brand-ink);
+  font-weight: 700;
+}
+
+/* ============================
+   Main Container
+============================ */
+.pd-container {
+  display: flex;
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 1.5rem auto;
+  padding: 0 2rem;
+  align-items: stretch;
+}
+
+/* ============================
+   Image Column
+============================ */
+.pd-image-col {
+  flex: 0 0 355px;
+  display: flex;
+}
+
+.pd-image-box {
+  background: linear-gradient(180deg, #ffffff 0%, var(--pd-brand-mist) 100%);
+  border: 2px solid rgba(0, 123, 255, 0.2);
+  border-radius: 16px;
+  padding: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 100%;
+  box-shadow: 0 14px 28px rgba(0, 86, 179, 0.1);
+}
+
+.pd-image-trigger {
+  position: relative;
+  cursor: zoom-in;
+  appearance: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.pd-image-trigger:hover {
+  transform: translateY(-3px);
+  border-color: rgba(0, 123, 255, 0.35);
+  box-shadow: 0 18px 36px rgba(0, 86, 179, 0.14);
+}
+
+.pd-image-hint {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  padding: 0.35rem 0.65rem;
+  border-radius: 999px;
+  background: rgba(18, 60, 135, 0.9);
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.pd-image {
+  width: 100%;
+  height: 100%;
+  max-height: 440px;
+  object-fit: contain;
+}
+
+.pd-image-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(7, 20, 46, 0.82);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  z-index: 10000;
+}
+
+.pd-image-modal {
+  width: min(1100px, 100%);
+  max-height: 92vh;
+  background: linear-gradient(180deg, #f8fbff 0%, #eaf3ff 100%);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 20px;
+  box-shadow: 0 22px 54px rgba(0, 0, 0, 0.28);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.pd-image-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid rgba(0, 123, 255, 0.14);
+  background: rgba(255, 255, 255, 0.88);
+}
+
+.pd-image-zoom-label {
+  color: var(--pd-brand-ink);
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.pd-image-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.pd-image-control-btn {
+  border: none;
+  border-radius: 999px;
+  background: #dcebff;
+  color: var(--pd-brand-ink);
+  padding: 0.55rem 0.95rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.2s ease;
+}
+
+.pd-image-control-btn:hover {
+  transform: translateY(-1px);
+  background: #c6ddff;
+}
+
+.pd-image-close-btn {
+  background: var(--pd-brand);
+  color: #fff;
+}
+
+.pd-image-close-btn:hover {
+  background: var(--pd-brand-dark);
+}
+
+.pd-image-modal-stage {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.75rem;
+}
+
+.pd-image-modal-img {
+  max-width: 100%;
+  max-height: 72vh;
+  object-fit: contain;
+  transform-origin: center center;
+  transition: transform 0.2s ease;
+}
+
+/* ============================
+   Info Column
+============================ */
+.pd-info-col {
+  flex: 1;
+}
+
+.pd-product-name {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--pd-brand-ink);
+  margin: 0 0 1rem 0;
+  line-height: 1.3;
+}
+
+/* ============================
+   Info Table
+============================ */
+.pd-info-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-bottom: 1.25rem;
+  background: rgba(255, 255, 255, 0.96);
+  border: 2px solid var(--pd-brand);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 14px 26px rgba(0, 86, 179, 0.08);
+}
+
+.pd-info-table tr {
+  background: transparent;
+}
+
+.pd-info-table tr:not(:last-child) td {
+  border-bottom: 1px solid rgba(0, 123, 255, 0.18);
+}
+
+.pd-label {
+  font-weight: 700;
+  color: #000000;
+  padding: 0.65rem 0.9rem;
+  width: 135px;
+  background: linear-gradient(180deg, #dcebff 0%, var(--pd-brand-soft) 100%);
+  font-size: 0.86rem;
+  vertical-align: top;
+  white-space: nowrap;
+  border-right: 2px solid var(--pd-brand);
+}
+
+.pd-value {
+  padding: 0.65rem 0.9rem;
+  color: #000000;
+  font-size: 0.86rem;
+  vertical-align: top;
+  line-height: 1.35;
+  background: rgba(255, 255, 255, 0.92);
+}
+
+/* ============================
+   Stock Badge
+============================ */
+.pd-badge {
+  display: inline-block;
+  padding: 0.22rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.pd-badge.instock {
+  background: #28a745;
+  color: #fff;
+}
+
+.pd-badge.ondemand {
+  background: #fd7e14;
+  color: #fff;
+}
+
+/* ============================
+   Action Buttons
+============================ */
+.pd-actions {
+  display: flex;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+  margin: 0 0 1rem;
+}
+
+.pd-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.6rem 1.15rem;
+  border-radius: 999px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+
+.pd-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 22px rgba(0, 86, 179, 0.16);
+}
+
+.pd-btn-enquiry {
+  background: linear-gradient(135deg, var(--pd-brand) 0%, var(--pd-brand-dark) 100%);
+  color: #fff;
+}
+
+.pd-btn-enquiry:hover {
+  background: linear-gradient(135deg, var(--pd-brand-dark) 0%, #004494 100%);
+}
+
+.pd-btn-quote {
+  background: linear-gradient(135deg, #126c87 0%, #0d5971 100%);
+  color: #fff;
+}
+
+.pd-btn-quote:hover {
+  background: #138496;
+}
+
+.pd-btn-whatsapp {
+  background: #25d366;
+  color: #fff;
+}
+
+.pd-btn-whatsapp:hover {
+  background: #1ebe5a;
+}
+
+.pd-btn-cancel {
+  background: #6c757d;
+  color: #fff;
+}
+
+.pd-btn-cancel:hover {
+  background: #545b62;
+}
+
+/* ============================
+   Enquiry Modal
+============================ */
+.pd-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.pd-modal {
+  background: #fff;
+  border-radius: 18px;
+  border: 2px solid rgba(0, 123, 255, 0.18);
+  padding: 2.25rem;
+  max-width: 480px;
+  width: 92%;
+  box-shadow: 0 18px 40px rgba(0, 86, 179, 0.2);
+}
+
+.pd-modal h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0 0 1.5rem 0;
+  color: var(--pd-brand-ink);
+}
+
+.pd-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.pd-form input,
+.pd-form textarea {
+  padding: 0.7rem 1rem;
+  border: 2px solid rgba(0, 123, 255, 0.18);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s;
+  background: #fff;
+}
+
+.pd-form input:focus,
+.pd-form textarea:focus {
+  border-color: var(--pd-brand);
+}
+
+.pd-form-btns {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+/* ============================
+   Responsive
+============================ */
+@media (max-width: 860px) {
+  .pd-container {
+    flex-direction: column;
+    gap: 1.25rem;
+    padding: 0 1.25rem;
+  }
+
+  .pd-image-col {
+    flex: none;
+    width: 100%;
+    display: block;
+  }
+
+  .pd-image-box {
+    padding: 1rem;
+    min-height: auto;
+  }
+
+  .pd-image-hint {
+    font-size: 0.72rem;
+    bottom: 10px;
+    right: 10px;
+  }
+
+  .pd-image {
+    height: auto;
+    max-height: 220px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pd-breadcrumb {
+    padding: 0.75rem 1rem;
+    font-size: 0.8rem;
+    flex-wrap: wrap;
+  }
+
+  .pd-product-name {
+    font-size: 1.25rem;
+  }
+
+  .pd-label {
+    width: 110px;
+    font-size: 0.85rem;
+    padding: 0.65rem 0.85rem;
+  }
+
+  .pd-value {
+    font-size: 0.85rem;
+    padding: 0.65rem 0.85rem;
+  }
+
+  .pd-btn {
+    font-size: 0.85rem;
+    padding: 0.6rem 1rem;
+  }
+
+  .pd-image-toolbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .pd-image-modal-stage {
+    padding: 1rem;
+  }
+}
