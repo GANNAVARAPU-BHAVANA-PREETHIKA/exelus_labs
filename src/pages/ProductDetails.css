@@ -248,6 +248,13 @@
   box-shadow: 0 14px 26px rgba(0, 86, 179, 0.08);
 }
 
+.pd-info-table-scroll {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
 .pd-info-table tr {
   background: transparent;
 }
@@ -469,11 +476,18 @@
     width: 110px;
     font-size: 0.85rem;
     padding: 0.65rem 0.85rem;
+    white-space: nowrap;
   }
 
   .pd-value {
     font-size: 0.85rem;
     padding: 0.65rem 0.85rem;
+    white-space: nowrap;
+  }
+
+  .pd-info-table {
+    width: max-content;
+    min-width: 100%;
   }
 
   .pd-btn {

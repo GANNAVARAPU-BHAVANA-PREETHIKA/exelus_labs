@@ -132,24 +132,26 @@ const ProductDetail = () => {
             </a>
           </div>
 
-          <table className="pd-info-table">
-            <tbody>
-              {rows.map((row) => (
-                <tr key={row.label}>
-                  <td className="pd-label">{row.label}</td>
-                  <td className="pd-value">
-                    {row.badge ? (
-                      <span className={`pd-badge ${row.value === 'In Stock' ? 'instock' : 'ondemand'}`}>
-                        {row.value}
-                      </span>
-                    ) : (
-                      row.value || '-'
-                    )}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <div className="pd-info-table-scroll">
+            <table className="pd-info-table">
+              <tbody>
+                {rows.map((row) => (
+                  <tr key={row.label}>
+                    <td className="pd-label">{row.label}</td>
+                    <td className="pd-value">
+                      {row.badge ? (
+                        <span className={`pd-badge ${row.value === 'In Stock' ? 'instock' : 'ondemand'}`}>
+                          {row.value}
+                        </span>
+                      ) : (
+                        row.value || '-'
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
 

@@ -13,10 +13,16 @@
     radial-gradient(circle at top right, rgba(18, 108, 135, 0.12), transparent 26%),
     linear-gradient(180deg, #f7fbff 0%, #eef5ff 100%);
   min-height: 100vh;
-<<<<<<< HEAD
   width: 100%;
-=======
->>>>>>> 347ae7686bb7afb4a71171b2b0c0cccd23ed3267
+  max-width: 1440px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.pl-page *,
+.pl-page *::before,
+.pl-page *::after {
+  box-sizing: border-box;
 }
 
 .pl-title {
@@ -41,6 +47,7 @@
   justify-content: center;
   gap: 0.45rem;
   flex-wrap: wrap;
+  min-width: 0;
 }
 
 .pl-header-bar .pl-title {
@@ -52,6 +59,8 @@
   font-size: 1rem;
   font-weight: 700;
   color: var(--pl-brand-dark);
+  word-break: break-word;
+  text-align: center;
 }
 
 .pl-title::after {
@@ -108,33 +117,11 @@
 /* ============================
    Search Bar
 ============================ */
-  min-width: 280px;
->>>>>>> 347ae7686bb7afb4a71171b2b0c0cccd23ed3267
-  max-width: 560px;
-  background: #fff;
-  border: 2px solid #d0d7e8;
-  border-radius: 12px;
-  padding: 0.7rem 1rem;
-  gap: 0.6rem;
-  transition: border-color 0.2s, box-shadow 0.2s;
-}
-=======
 .pl-search-bar {
   display: flex;
   align-items: center;
   flex: 1;
   min-width: 280px;
-  max-width: 560px;
-  background: #fff;
-  border: 2px solid #d0d7e8;
-  border-radius: 12px;
-  padding: 0.7rem 1rem;
-  gap: 0.6rem;
-  transition: border-color 0.2s, box-shadow 0.2s;
-}
-=======
-  min-width: 280px;
->>>>>>> 347ae7686bb7afb4a71171b2b0c0cccd23ed3267
   max-width: 560px;
   background: #fff;
   border: 2px solid #d0d7e8;
@@ -336,10 +323,7 @@
   margin-bottom: 1rem;
   color: #5c6478;
   font-size: 0.92rem;
-<<<<<<< HEAD
   word-break: break-word;
-=======
->>>>>>> 347ae7686bb7afb4a71171b2b0c0cccd23ed3267
 }
 
 .pl-breadcrumb a {
@@ -354,9 +338,11 @@
 .pl-back-link {
   display: inline-flex;
   align-items: center;
+  gap: 0.35rem;
   color: #3d3b8e;
   font-weight: 600;
   text-decoration: none;
+  word-break: break-word;
 }
 
 .pl-back-link:hover {
@@ -405,10 +391,7 @@
   padding: 1.2rem;
   text-decoration: none;
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-<<<<<<< HEAD
   min-width: 0;
-=======
->>>>>>> 347ae7686bb7afb4a71171b2b0c0cccd23ed3267
 }
 
 .pl-letter-grid .pl-letter-card {
@@ -489,6 +472,8 @@
   font-size: 1.35rem;
   font-weight: 800;
   color: var(--pl-brand-ink);
+  word-break: break-word;
+  text-align: center;
 }
 
 .pl-results-count {
@@ -502,10 +487,7 @@
   font-size: 1.05rem;
   color: var(--pl-brand-ink);
   line-height: 1.4;
-<<<<<<< HEAD
   word-break: break-word;
-=======
->>>>>>> 347ae7686bb7afb4a71171b2b0c0cccd23ed3267
 }
 
 .pl-browse-card {
@@ -542,6 +524,7 @@
   transition: box-shadow 0.25s ease, transform 0.2s ease;
   display: flex;
   flex-direction: column;
+  min-width: 0;
 }
 
 .pl-product-card:hover {
@@ -580,6 +563,8 @@
   color: #1e1e1e;
   margin: 0;
   line-height: 1.3;
+  word-break: break-word;
+  overflow-wrap: anywhere;
 }
 
 .pl-card-details {
@@ -599,6 +584,7 @@
   font-size: 0.78rem;
   font-weight: 700;
   color: #45506b;
+  word-break: break-word;
 }
 
 .pl-card-value {
@@ -606,6 +592,7 @@
   color: #4a4a4a;
   line-height: 1.45;
   word-break: break-word;
+  overflow-wrap: anywhere;
 }
 
 .pl-card-footer {
@@ -774,25 +761,22 @@
    Tablet (≤900px): 3 columns
 ============================ */
 @media (max-width: 900px) {
-<<<<<<< HEAD
   .pl-page {
     padding: 1.75rem 1.25rem 2.4rem;
   }
-
-=======
->>>>>>> 347ae7686bb7afb4a71171b2b0c0cccd23ed3267
   .pl-grid,
   .pl-browse-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-<<<<<<< HEAD
 
   .pl-header-left,
   .pl-results-head {
     text-align: center;
   }
-=======
->>>>>>> 347ae7686bb7afb4a71171b2b0c0cccd23ed3267
+
+  .pl-card-img-wrap {
+    height: 170px;
+  }
 }
 
 /* ============================
@@ -816,7 +800,6 @@
     font-size: 1.6rem;
   }
 
-<<<<<<< HEAD
   .pl-breadcrumb {
     font-size: 0.85rem;
     gap: 0.3rem;
@@ -833,8 +816,6 @@
     margin-top: 1rem;
   }
 
-=======
->>>>>>> 347ae7686bb7afb4a71171b2b0c0cccd23ed3267
   .pl-search-bar {
     max-width: 100%;
     min-width: 100%;
@@ -861,7 +842,10 @@
   .pl-card-row {
     grid-template-columns: 100px 1fr;
   }
-<<<<<<< HEAD
+
+  .pl-card-img-wrap {
+    height: 160px;
+  }
 
   .pl-browse-card,
   .pl-letter-card,
@@ -869,21 +853,16 @@
   .pl-empty {
     border-radius: 12px;
   }
-=======
->>>>>>> 347ae7686bb7afb4a71171b2b0c0cccd23ed3267
 }
 
 /* ============================
    Mobile (≤480px): 2 columns
 ============================ */
 @media (max-width: 480px) {
-<<<<<<< HEAD
   .pl-page {
     padding: 1.2rem 0.85rem 1.8rem;
   }
 
-=======
->>>>>>> 347ae7686bb7afb4a71171b2b0c0cccd23ed3267
   .pl-grid {
     grid-template-columns: 1fr;
     gap: 0.6rem;
@@ -903,7 +882,15 @@
     font-size: 1.4rem;
   }
 
-<<<<<<< HEAD
+  .pl-header-bar {
+    margin-bottom: 0.8rem;
+  }
+
+  .pl-header-left {
+    width: 100%;
+    gap: 0.3rem;
+  }
+
   .pl-title::after {
     width: 72px;
   }
@@ -922,15 +909,90 @@
     font-size: 0.98rem;
   }
 
+  .pl-results-head {
+    gap: 0.2rem 0.35rem;
+  }
+
   .pl-count,
   .pl-results-count {
     font-size: 0.92rem;
   }
 
-=======
->>>>>>> 347ae7686bb7afb4a71171b2b0c0cccd23ed3267
+  .pl-card-body {
+    padding: 0.8rem;
+    gap: 0.6rem;
+  }
+
+  .pl-card-img-wrap {
+    height: 150px;
+  }
+
   .pl-card-row {
     grid-template-columns: 1fr;
     gap: 0.15rem;
+  }
+
+  .pl-card-label,
+  .pl-card-value {
+    font-size: 0.78rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .pl-page {
+    padding: 1rem 0.7rem 1.5rem;
+  }
+
+  .pl-title {
+    font-size: 1.25rem;
+  }
+
+  .pl-title::after {
+    width: 60px;
+    margin-top: 0.5rem;
+  }
+
+  .pl-letter-grid {
+    gap: 0.35rem;
+    padding: 0.6rem 0.65rem 0.75rem;
+  }
+
+  .pl-letter-grid .pl-letter-card {
+    min-width: 2rem;
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .pl-letter-label {
+    font-size: 0.8rem;
+  }
+
+  .pl-browse-card {
+    padding: 0.9rem;
+  }
+
+  .pl-browse-card h3,
+  .pl-results-title {
+    font-size: 0.95rem;
+  }
+
+  .pl-count,
+  .pl-results-count,
+  .pl-back-link,
+  .pl-empty p,
+  .pl-error {
+    font-size: 0.85rem;
+  }
+
+  .pl-card-body {
+    padding: 0.75rem;
+  }
+
+  .pl-card-name {
+    font-size: 0.95rem;
+  }
+
+  .pl-card-img-wrap {
+    height: 136px;
   }
 }

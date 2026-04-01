@@ -151,16 +151,23 @@ const Home = () => {
                       }
                     />
                   </div>
-                  <table className="product-details">
-                    <tbody>
-                      <tr><td>API Name</td><td>{product.api_name || '-'}</td></tr>
-                      <tr><td>CAT No.</td><td>{product.cat_no || '-'}</td></tr>
-                      <tr><td>CAS No.</td><td>{product.cas_no || '-'}</td></tr>
-                      <tr><td>Molecular Formula</td><td>{product.molecular_formula || '-'}</td></tr>
-                      <tr><td>Molecular Weight</td><td>{product.molecular_weight || '-'}</td></tr>
-                      <tr><td>Inventory</td><td>{product.availability || '-'}</td></tr>
-                    </tbody>
-                  </table>
+                  <div
+                    className="product-details-scroll"
+                    onClick={(event) => event.stopPropagation()}
+                    onTouchStart={(event) => event.stopPropagation()}
+                    onPointerDown={(event) => event.stopPropagation()}
+                  >
+                    <table className="product-details">
+                      <tbody>
+                        <tr><td>API Name</td><td>{product.api_name || '-'}</td></tr>
+                        <tr><td>CAT No.</td><td>{product.cat_no || '-'}</td></tr>
+                        <tr><td>CAS No.</td><td>{product.cas_no || '-'}</td></tr>
+                        <tr><td>Molecular Formula</td><td>{product.molecular_formula || '-'}</td></tr>
+                        <tr><td>Molecular Weight</td><td>{product.molecular_weight || '-'}</td></tr>
+                        <tr><td>Inventory</td><td>{product.availability || '-'}</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
                   <div className="button-wrapper">
                     <a
                       href={`mailto:info@exeluslabs.com?subject=${encodeURIComponent(`Request Quote for ${product.name}`)}`}

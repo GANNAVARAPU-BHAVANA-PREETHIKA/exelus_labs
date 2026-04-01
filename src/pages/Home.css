@@ -1,68 +1,13 @@
-/* Global Layout */
 .home {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #f5f9ff;
   color: #1e1e1e;
 }
 
-/* ========================
-   🔄 Slideshow (Hero Area)
-======================== */
-  height: 80vh;
-  min-height: 400px;
-
->>>>>>> 347ae7686bb7afb4a71171b2b0c0cccd23ed3267
-  overflow: hidden;
-  position: relative;
-  background: #000;
-}
-
-.slide img.full-slide {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-<<<<<<< HEAD
-  object-position: center center;
-}
-
-.slide:nth-child(2) img.full-slide {
-  object-position: center 32%;
-=======
-}
-
-.slide:nth-child(2) img.full-slide {
-  object-fit: contain;
-  object-position: center center;
-  transform: scaleX(1.58);
-  transform-origin: center center;
->>>>>>> 347ae7686bb7afb4a71171b2b0c0cccd23ed3267
-=======
 .slideshow-container {
   width: 100%;
-  height: 80vh;
+  height: clamp(320px, 80vh, 760px);
   min-height: 400px;
-  overflow: hidden;
-  position: relative;
-  background: #000;
-}
-
-.slide img.full-slide {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.slide:nth-child(2) img.full-slide {
-  object-fit: contain;
-  object-position: center center;
-  transform: scaleX(1.58);
-  transform-origin: center center;
-}
-=======
-  height: 80vh;
-  min-height: 400px;
-
->>>>>>> 347ae7686bb7afb4a71171b2b0c0cccd23ed3267
   overflow: hidden;
   position: relative;
   background: #000;
@@ -82,28 +27,17 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-<<<<<<< HEAD
   object-position: center center;
 }
 
 .slide:nth-child(2) img.full-slide {
   object-position: center 32%;
-=======
-}
-
-.slide:nth-child(2) img.full-slide {
-  object-fit: contain;
-  object-position: center center;
-  transform: scaleX(1.58);
-  transform-origin: center center;
->>>>>>> 347ae7686bb7afb4a71171b2b0c0cccd23ed3267
 }
 
 .slide.active {
   display: block;
 }
 
-/* Explore More Button */
 .explore-btn {
   position: absolute;
   bottom: 20px;
@@ -119,19 +53,13 @@
   cursor: pointer;
   transition: background-color 0.3s ease;
   z-index: 10;
-<<<<<<< HEAD
   white-space: nowrap;
-=======
->>>>>>> 347ae7686bb7afb4a71171b2b0c0cccd23ed3267
 }
 
 .explore-btn:hover {
   background-color: #0056b3;
 }
 
-/* ========================
-   📢 Section Headers
-======================== */
 .section {
   padding: 60px 40px;
   background-color: #f5f9ff;
@@ -145,9 +73,6 @@
   font-weight: bold;
 }
 
-/* ========================
-   About Section
-======================== */
 .about-section {
   background: #fff;
   padding: 72px 60px;
@@ -182,7 +107,7 @@
   font-weight: 800;
   color: #0d1333;
   line-height: 1.15;
-  margin: 0 0 20px 0;
+  margin: 0 0 20px;
 }
 
 .about-divider {
@@ -210,16 +135,13 @@
   color: #374151;
   line-height: 1.9;
   text-align: justify;
-  margin: 0 0 18px 0;
+  margin: 0 0 18px;
 }
 
 .about-right p:last-child {
   margin-bottom: 0;
 }
 
-/* ========================
-   🧪 Products Section
-======================== */
 .products-carousel {
   position: relative;
   display: flex;
@@ -265,23 +187,18 @@
   scroll-behavior: smooth;
   width: 100%;
   max-width: 1200px;
-<<<<<<< HEAD
   -webkit-overflow-scrolling: touch;
   scrollbar-width: thin;
-=======
->>>>>>> 347ae7686bb7afb4a71171b2b0c0cccd23ed3267
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: calc(50% - 130px);
 }
 
 .products {
   display: flex;
   gap: 20px;
-  padding: 20px;
+  padding: 20px calc(50% - 130px);
   min-width: max-content;
   align-items: stretch;
-<<<<<<< HEAD
-  scroll-snap-type: x proximity;
-=======
->>>>>>> 347ae7686bb7afb4a71171b2b0c0cccd23ed3267
 }
 
 .product-card {
@@ -299,10 +216,8 @@
   align-items: center;
   padding: 20px;
   transition: transform 0.3s ease;
-<<<<<<< HEAD
-  scroll-snap-align: start;
-=======
->>>>>>> 347ae7686bb7afb4a71171b2b0c0cccd23ed3267
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
 }
 
 .products .product-card {
@@ -313,25 +228,20 @@
 
 .product-card:hover {
   transform: translateY(-5px);
-
 }
 
 .product-card:hover .product-img {
   border: 1px solid #d0dcf0;
-  /* very soft blue border on hover */
 }
 
 .product-title {
   display: -webkit-box;
   -webkit-line-clamp: 2;
   line-clamp: 2;
-  /* ✅ this resolves the warning */
   -webkit-box-orient: vertical;
   box-orient: vertical;
-  /* optional fallback */
   overflow: hidden;
   text-overflow: ellipsis;
-
   word-break: break-word;
   overflow-wrap: break-word;
   white-space: normal;
@@ -350,15 +260,12 @@
   width: 100%;
   height: 104px;
   background-color: #ffffff;
-  /* ✅ Always white */
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 12px;
   border-radius: 12px;
-  /* optional: to soften the box */
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.03);
-  /* optional subtle depth */
 }
 
 .product-img img {
@@ -366,9 +273,7 @@
   max-height: 100%;
   object-fit: contain;
   background-color: transparent;
-  /* ✅ Keep actual image transparent */
 }
-
 
 .product-details {
   width: 100%;
@@ -376,6 +281,18 @@
   font-size: 0.9rem;
   border-collapse: collapse;
   margin-bottom: 16px 0;
+}
+
+.product-details-scroll {
+  width: 100%;
+  max-width: 100%;
+  display: block;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x;
+  overscroll-behavior-x: contain;
+  cursor: grab;
 }
 
 .product-details td {
@@ -387,7 +304,6 @@
   max-width: 110px;
 }
 
-/* CTA Button */
 .button-wrapper {
   margin-top: auto;
   width: 100%;
@@ -410,64 +326,6 @@
   background-color: #0056b3;
 }
 
-/* ========================
-   📱 Responsive Products Carousel
-======================== */
-@media (max-width: 768px) {
-  .products-carousel {
-    padding: 0 40px;
-  }
-
-  .carousel-arrow {
-    padding: 8px;
-    font-size: 16px;
-  }
-
-  .left-arrow {
-    left: 0;
-  }
-
-  .right-arrow {
-    right: 0;
-  }
-
-  .products {
-    gap: 15px;
-    padding: 15px;
-  }
-
-  .product-card {
-    flex: 0 0 220px;
-    width: 220px;
-    max-width: 220px;
-    min-height: 400px;
-  }
-
-  .updates-card {
-    width: 220px;
-  }
-}
-
-@media (max-width: 480px) {
-  .products-carousel {
-    padding: 0 30px;
-  }
-
-  .product-card {
-    flex: 0 0 180px;
-    width: 180px;
-    max-width: 180px;
-    min-height: 350px;
-  }
-
-  .updates-card {
-    width: 200px;
-  }
-}
-
-/* ========================
-   🔔 Updates Card
-======================== */
 .updates-card {
   background-color: #eaf1ff;
   border-radius: 12px;
@@ -479,6 +337,8 @@
   justify-content: center;
   align-items: center;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.06);
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
 }
 
 .card-title {
@@ -488,9 +348,6 @@
   color: #123c87;
 }
 
-/* ========================
-   ✅ Accreditation Logos
-======================== */
 .accreditation-scroll-wrapper {
   display: flex;
   justify-content: center;
@@ -522,9 +379,6 @@
   color: #234;
 }
 
-/* ========================
-   🖼 Full Slide Image
-======================== */
 .full-slide {
   width: 100%;
   height: auto;
@@ -532,16 +386,10 @@
   image-rendering: auto;
 }
 
-/* 🔁 Make slideshow more responsive */
-
 @media (max-width: 768px) {
   .slideshow-container {
-<<<<<<< HEAD
     height: clamp(280px, 48vh, 440px);
     min-height: 280px;
-=======
-    height: 40vh;
->>>>>>> 347ae7686bb7afb4a71171b2b0c0cccd23ed3267
   }
 
   .slide img.full-slide {
@@ -552,13 +400,10 @@
     font-size: 1.8rem;
   }
 
-<<<<<<< HEAD
   .section {
     padding: 48px 24px;
   }
 
-=======
->>>>>>> 347ae7686bb7afb4a71171b2b0c0cccd23ed3267
   .about-section {
     padding: 48px 24px;
   }
@@ -581,9 +426,37 @@
     line-height: 1.8;
   }
 
+  .products-carousel {
+    padding: 0 40px;
+  }
+
+  .carousel-arrow {
+    padding: 8px;
+    font-size: 16px;
+  }
+
+  .left-arrow {
+    left: 0;
+  }
+
+  .right-arrow {
+    right: 0;
+  }
+
+  .products {
+    gap: 15px;
+    padding: 15px calc(50% - 110px);
+  }
+
+  .products-container {
+    scroll-padding-inline: calc(50% - 110px);
+  }
+
   .product-card {
-    max-width: 100%;
-    min-height: unset;
+    flex: 0 0 220px;
+    width: 220px;
+    max-width: 220px;
+    min-height: 400px;
   }
 
   .product-img {
@@ -593,10 +466,7 @@
   .product-details td {
     font-size: 0.85rem;
     max-width: 140px;
-<<<<<<< HEAD
     white-space: normal;
-=======
->>>>>>> 347ae7686bb7afb4a71171b2b0c0cccd23ed3267
   }
 
   .btn {
@@ -606,7 +476,7 @@
   }
 
   .updates-card {
-    width: 100%;
+    width: 220px;
     padding: 20px;
     margin-top: 16px;
   }
@@ -630,12 +500,14 @@
   }
 }
 
-/* Ultra small devices */
 @media (max-width: 480px) {
-<<<<<<< HEAD
   .slideshow-container {
     height: clamp(240px, 38vh, 320px);
     min-height: 240px;
+  }
+
+  .slide:nth-child(2) img.full-slide {
+    object-position: 12% 32%;
   }
 
   .explore-btn {
@@ -644,29 +516,47 @@
     font-size: 0.95rem;
   }
 
-=======
->>>>>>> 347ae7686bb7afb4a71171b2b0c0cccd23ed3267
   .section {
     padding: 40px 20px;
   }
 
-<<<<<<< HEAD
   .products-carousel {
     padding: 0 20px;
   }
 
   .products {
     gap: 12px;
-    padding: 12px;
+    padding: 12px calc(50% - 90px);
+  }
+
+  .products-container {
+    scroll-padding-inline: calc(50% - 90px);
+  }
+
+  .product-card {
+    flex: 0 0 180px;
+    width: 180px;
+    max-width: 180px;
+    min-height: 350px;
+  }
+
+  .updates-card {
+    width: 200px;
   }
 
   .product-details td {
     font-size: 0.75rem;
-    white-space: normal;
-=======
-  .product-details td {
-    font-size: 0.75rem;
->>>>>>> 347ae7686bb7afb4a71171b2b0c0cccd23ed3267
+    white-space: nowrap;
+  }
+
+  .product-details-scroll {
+    padding-bottom: 4px;
+  }
+
+  .product-details {
+    width: max-content;
+    min-width: 260px;
+    table-layout: auto;
   }
 
   .btn {
