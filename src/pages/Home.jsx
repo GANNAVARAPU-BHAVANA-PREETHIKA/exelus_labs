@@ -1,5 +1,5 @@
 // src/pages/Home.jsx
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Home.css';
 import { DEFAULT_PRODUCT_IMAGE, fetchFeaturedProductsByCatNo, isSupabaseConfigured } from '../services/productService';
@@ -41,6 +41,7 @@ const FEATURED_PRODUCT_CAT_NOS = [
 
 const Home = () => {
   const navigate = useNavigate();
+  const productsContainerRef = useRef(null);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [products, setProducts] = useState([]);
   const [productsError, setProductsError] = useState('');
@@ -81,8 +82,23 @@ const Home = () => {
     };
   }, []);
 
+  useEffect(() => {
+    if (!productsContainerRef.current) return;
+
+    const container = productsContainerRef.current;
+    const resetScroll = () => {
+      container.scrollLeft = 0;
+      container.scrollTo({ left: 0, behavior: 'auto' });
+    };
+
+    resetScroll();
+    const frameId = window.requestAnimationFrame(resetScroll);
+
+    return () => window.cancelAnimationFrame(frameId);
+  }, [products.length]);
+
   const scrollCarousel = (direction) => {
-    const container = document.querySelector('.products-container');
+    const container = productsContainerRef.current;
     if (!container) return;
 
     const scrollAmount = 300;
@@ -130,7 +146,7 @@ const Home = () => {
         {productsError && <p className="products-error">{productsError}</p>}
         <div className="products-carousel">
           <button className="carousel-arrow left-arrow" onClick={() => scrollCarousel(-1)}>&#10094;</button>
-          <div className="products-container">
+          <div className="products-container" ref={productsContainerRef}>
             <div className="products">
               {products.map((product) => (
                 <div

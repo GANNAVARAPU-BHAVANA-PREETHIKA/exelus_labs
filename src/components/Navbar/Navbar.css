@@ -158,13 +158,6 @@ header {
   display: flex;
 }
 
-@media (min-width: 1025px) {
-  .dropdown:hover .dropdown-content,
-  .dropdown:focus-within .dropdown-content {
-    display: flex;
-  }
-}
-
 .dropdown-content li {
   width: 100%;
   padding: 0;

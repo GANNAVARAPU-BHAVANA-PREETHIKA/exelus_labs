@@ -11,6 +11,7 @@ const Navbar = () => {
   const { products } = useContext(ProductContext);
   const [menuOpen, setMenuOpen] = useState(false);
   const dropdownRef = useRef(null);
+  const dropdownCloseTimeoutRef = useRef(null);
 
   const navigate = useNavigate();
 
@@ -23,12 +24,38 @@ const Navbar = () => {
   };
 
   const closeDropdown = () => {
+    if (dropdownCloseTimeoutRef.current) {
+      clearTimeout(dropdownCloseTimeoutRef.current);
+      dropdownCloseTimeoutRef.current = null;
+    }
     setDropdownOpen(false);
   };
 
   const toggleDropdown = () => {
     if (window.innerWidth <= 1024) {
       setDropdownOpen((current) => !current);
+    }
+  };
+
+  const openDropdownWithDelayGuard = () => {
+    if (window.innerWidth > 1024) {
+      if (dropdownCloseTimeoutRef.current) {
+        clearTimeout(dropdownCloseTimeoutRef.current);
+        dropdownCloseTimeoutRef.current = null;
+      }
+      setDropdownOpen(true);
+    }
+  };
+
+  const closeDropdownWithDelay = () => {
+    if (window.innerWidth > 1024) {
+      if (dropdownCloseTimeoutRef.current) {
+        clearTimeout(dropdownCloseTimeoutRef.current);
+      }
+      dropdownCloseTimeoutRef.current = setTimeout(() => {
+        setDropdownOpen(false);
+        dropdownCloseTimeoutRef.current = null;
+      }, 220);
     }
   };
 
@@ -71,6 +98,12 @@ const Navbar = () => {
 
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  useEffect(() => () => {
+    if (dropdownCloseTimeoutRef.current) {
+      clearTimeout(dropdownCloseTimeoutRef.current);
+    }
   }, []);
 
   useEffect(() => {
@@ -166,6 +199,8 @@ const Navbar = () => {
           <li
             className="dropdown"
             ref={dropdownRef}
+            onMouseEnter={openDropdownWithDelayGuard}
+            onMouseLeave={closeDropdownWithDelay}
           >
             <button
               type="button"
@@ -177,7 +212,7 @@ const Navbar = () => {
               Services
             </button>
             {(isDesktop || isDropdownOpen) && (
-              <ul className={`dropdown-content ${!isDesktop && isDropdownOpen ? 'open' : ''}`}>
+              <ul className={`dropdown-content ${isDropdownOpen ? 'open' : ''}`}>
                 <li>
                   <Link to="/services" onClick={handleMenuItemClick}>
                     Custom Synthesis
