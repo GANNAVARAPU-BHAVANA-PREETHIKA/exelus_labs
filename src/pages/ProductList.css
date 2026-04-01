@@ -360,14 +360,22 @@
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 0.45rem;
   overflow-x: auto;
   overflow-y: hidden;
   white-space: nowrap;
   padding: 0.9rem 1rem 1.05rem;
+  width: 100%;
+  max-width: 100%;
   scrollbar-width: none;
   -ms-overflow-style: none;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  scroll-snap-type: x proximity;
+  scroll-padding-inline: 1rem;
+  touch-action: pan-x;
+  overscroll-behavior-x: contain;
   background: rgba(255, 255, 255, 0.72);
   border: 1px solid rgba(0, 123, 255, 0.12);
   border-radius: 999px;
@@ -402,6 +410,7 @@
   align-items: center;
   justify-content: center;
   padding: 0;
+  scroll-snap-align: start;
   border: 1.5px solid rgba(0, 123, 255, 0.22);
   border-radius: 999px;
   background: linear-gradient(180deg, #ffffff 0%, var(--pl-brand-mist) 100%);
@@ -755,6 +764,17 @@
   .pl-browse-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .pl-letter-grid {
+    gap: 0.4rem;
+    padding: 0.8rem 0.9rem 0.95rem;
+  }
+
+  .pl-letter-grid .pl-letter-card {
+    min-width: 2.15rem;
+    width: 2.15rem;
+    height: 2.15rem;
+  }
 }
 
 /* ============================
@@ -852,6 +872,10 @@
   .pl-error,
   .pl-empty {
     border-radius: 12px;
+  }
+
+  .pl-letter-grid {
+    padding: 0.75rem 0.8rem 0.9rem;
   }
 }
 
