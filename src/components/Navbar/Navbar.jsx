@@ -6,6 +6,7 @@ import { ProductContext } from '../../context/ProductContext';
 
 const Navbar = () => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(() => window.innerWidth > 1024);
   const [searchTerm, setSearchTerm] = useState('');
   const { products } = useContext(ProductContext);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -26,18 +27,8 @@ const Navbar = () => {
   };
 
   const toggleDropdown = () => {
-    setDropdownOpen((current) => !current);
-  };
-
-  const openDropdownOnDesktop = () => {
-    if (window.innerWidth > 1024) {
-      setDropdownOpen(true);
-    }
-  };
-
-  const closeDropdownOnDesktop = () => {
-    if (window.innerWidth > 1024) {
-      setDropdownOpen(false);
+    if (window.innerWidth <= 1024) {
+      setDropdownOpen((current) => !current);
     }
   };
 
@@ -84,6 +75,8 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleResize = () => {
+      const desktop = window.innerWidth > 1024;
+      setIsDesktop(desktop);
       if (window.innerWidth > 1024) {
         setMenuOpen(false);
       }
@@ -173,25 +166,25 @@ const Navbar = () => {
           <li
             className="dropdown"
             ref={dropdownRef}
-            onMouseEnter={openDropdownOnDesktop}
-            onMouseLeave={closeDropdownOnDesktop}
           >
             <button
               type="button"
               className="dropdown-toggle"
               onClick={toggleDropdown}
-              aria-expanded={isDropdownOpen}
+              aria-expanded={isDesktop ? undefined : isDropdownOpen}
               aria-haspopup="true"
             >
               Services
             </button>
-            <ul className={`dropdown-content ${isDropdownOpen ? 'open' : ''}`}>
-              <li>
-                <Link to="/services" onClick={handleMenuItemClick}>
-                  Custom Synthesis
-                </Link>
-              </li>
-            </ul>
+            {(isDesktop || isDropdownOpen) && (
+              <ul className={`dropdown-content ${!isDesktop && isDropdownOpen ? 'open' : ''}`}>
+                <li>
+                  <Link to="/services" onClick={handleMenuItemClick}>
+                    Custom Synthesis
+                  </Link>
+                </li>
+              </ul>
+            )}
           </li>
           <li>
             <Link to="/about-us" onClick={handleMenuItemClick}>

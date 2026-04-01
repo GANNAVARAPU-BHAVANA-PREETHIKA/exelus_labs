@@ -56,7 +56,7 @@ header {
   max-width: 480px;
 }
 
-.navbar ul {
+.navbar > ul {
   list-style: none;
   display: flex;
   align-items: center;
@@ -67,11 +67,11 @@ header {
   min-width: 0;
 }
 
-.navbar ul li {
+.navbar > ul > li {
   position: relative;
 }
 
-.navbar ul li a,
+.navbar > ul > li > a,
 .dropdown-toggle {
   color: black;
   font-weight: bold;
@@ -82,7 +82,7 @@ header {
   text-decoration: none;
 }
 
-.navbar ul li a::before,
+.navbar > ul > li > a::before,
 .dropdown-toggle::before {
   content: '';
   position: absolute;
@@ -96,9 +96,9 @@ header {
   z-index: -1;
 }
 
-.navbar ul li a:hover::before,
-.navbar ul li a:focus::before,
-.navbar ul li a.active::before,
+.navbar > ul > li > a:hover::before,
+.navbar > ul > li > a:focus::before,
+.navbar > ul > li > a.active::before,
 .dropdown-toggle:hover::before,
 .dropdown-toggle:focus::before,
 .dropdown-toggle[aria-expanded='true']::before {
@@ -106,7 +106,7 @@ header {
   transform: scale(1);
 }
 
-.navbar ul li a:hover,
+.navbar > ul > li > a:hover,
 .dropdown-toggle:hover,
 .dropdown-toggle:focus,
 .dropdown-toggle[aria-expanded='true'] {
@@ -156,6 +156,13 @@ header {
 
 .dropdown-content.open {
   display: flex;
+}
+
+@media (min-width: 1025px) {
+  .dropdown:hover .dropdown-content,
+  .dropdown:focus-within .dropdown-content {
+    display: flex;
+  }
 }
 
 .dropdown-content li {
@@ -373,7 +380,7 @@ header {
     display: block;
   }
 
-  .navbar ul {
+  .navbar > ul {
     display: none;
     flex-direction: column;
     width: 100%;
@@ -385,21 +392,21 @@ header {
     gap: 0;
   }
 
-  .navbar ul.show {
+  .navbar > ul.show {
     display: flex;
   }
 
-  .navbar ul li {
+  .navbar > ul > li {
     width: 100%;
     padding: 0;
     border-bottom: 1px solid #f0f0f0;
   }
 
-  .navbar ul li:last-child {
+  .navbar > ul > li:last-child {
     border-bottom: none;
   }
 
-  .navbar ul li a {
+  .navbar > ul > li > a {
     display: block;
     padding: 15px 20px;
     width: 100%;
@@ -414,7 +421,7 @@ header {
     box-sizing: border-box;
   }
 
-  .navbar ul li a:hover {
+  .navbar > ul > li > a:hover {
     background-color: rgba(0, 123, 255, 0.05);
   }
 
@@ -501,7 +508,7 @@ header {
     height: 40px;
   }
 
-  .navbar ul li a,
+  .navbar > ul > li > a,
   .dropdown-toggle {
     font-size: 14px;
     padding: 10px 14px;
@@ -533,7 +540,7 @@ header {
     height: 34px;
   }
 
-  .navbar ul li a,
+  .navbar > ul > li > a,
   .dropdown-toggle {
     font-size: 14px;
     padding: 9px 12px;
