@@ -1,6 +1,6 @@
 // src/pages/Home.jsx
 import React, { useEffect, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Home.css';
 import { DEFAULT_PRODUCT_IMAGE, fetchFeaturedProductsByCatNo, isSupabaseConfigured } from '../services/productService';
 import slide1 from '../assets/slide1.jpg';
@@ -169,9 +169,6 @@ const Home = () => {
                   </div>
                   <div
                     className="product-details-scroll"
-                    onClick={(event) => event.stopPropagation()}
-                    onTouchStart={(event) => event.stopPropagation()}
-                    onPointerDown={(event) => event.stopPropagation()}
                   >
                     <table className="product-details">
                       <tbody>
@@ -185,13 +182,12 @@ const Home = () => {
                     </table>
                   </div>
                   <div className="button-wrapper">
-                    <a
-                      href={`mailto:info@exeluslabs.com?subject=${encodeURIComponent(`Request Quote for ${product.name}`)}`}
+                    <Link
+                      to={`/products/${product.cat_no}`}
                       className="btn"
-                      onClick={(event) => event.stopPropagation()}
                     >
-                      Request Quote
-                    </a>
+                      View Product
+                    </Link>
                   </div>
                 </div>
               ))}
