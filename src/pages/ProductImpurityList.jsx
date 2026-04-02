@@ -13,6 +13,17 @@ function getLetterLabel(letterParam) {
   return alphabet.includes(candidate) ? candidate : null;
 }
 
+function getUniqueProductCount(items) {
+  const seen = new Set();
+
+  items.forEach((product) => {
+    const key = `${product.api_name || ''}::${product.cat_no || product.id || ''}`;
+    seen.add(key);
+  });
+
+  return seen.size;
+}
+
 const ProductImpurityList = () => {
   const { letter } = useParams();
   const letterLabel = getLetterLabel(letter);
@@ -118,7 +129,12 @@ const ProductImpurityList = () => {
       ) : (
         <div className="pl-browse-grid">
           {impurities.map((impurity) => {
-            const relatedCount = products.filter((product) => product.browse_label?.trim() === impurity).length;
+            const relatedProducts = products.filter(
+              (product) =>
+                product.browse_letter === letterLabel &&
+                product.browse_label?.trim() === impurity
+            );
+            const relatedCount = getUniqueProductCount(relatedProducts);
 
             return (
               <Link

@@ -38,6 +38,10 @@ function isPresentValue(value) {
   return normalized !== '' && normalized !== '-';
 }
 
+function normalizeText(value) {
+  return isPresentValue(value) ? String(value).trim() : '';
+}
+
 function normalizeSynonyms(value) {
   if (Array.isArray(value)) {
     return value.filter(Boolean).join(', ');
@@ -70,14 +74,15 @@ function getBrowseLetterKey(value) {
 }
 
 function normalizeProduct(product) {
-  const productName = product.mpurty || product.impurity_name || product.impurity_na || '';
+  const productName = normalizeText(product.mpurty || product.impurity_name || product.impurity_na);
   const synonyms = normalizeSynonyms(product.synonyms);
-  const apiName = product.api_name || '';
-  const browseLabel = apiName || productName || product.cat_no || '';
+  const apiName = normalizeText(product.api_name);
+  const catNo = normalizeText(product.cat_no);
+  const browseLabel = apiName || productName || catNo || '';
   const browseLetter = isPresentValue(apiName) ? getBrowseLetterKey(apiName) : 'Others';
 
   return {
-    id: product.id ?? product.cat_no,
+    id: product.id ?? catNo,
     sl_no: product.sl_no ?? '',
     impurity: browseLabel,
     api_name: apiName,
@@ -85,19 +90,33 @@ function normalizeProduct(product) {
     browse_letter: browseLetter,
     name: productName,
     name_en: productName,
-    cas_no: product.cas_no || '',
-    cas_number: product.cas_no || '',
-    cat_no: product.cat_no || '',
-    code: product.cat_no || '',
-    iupac_name: product.iupac || '',
-    molecular_formula: product.mf || '',
-    molecular_weight: product.mw || '',
-    storage: product.storage || '',
+    cas_no: normalizeText(product.cas_no),
+    cas_number: normalizeText(product.cas_no),
+    cat_no: catNo,
+    code: catNo,
+    iupac_name: normalizeText(product.iupac),
+    molecular_formula: normalizeText(product.mf),
+    molecular_weight: normalizeText(product.mw),
+    storage: normalizeText(product.storage),
     synonyms,
     synonims: synonyms,
     availability: normalizeAvailability(product.inv_status),
     image_url: product.structure || DEFAULT_PRODUCT_IMAGE,
   };
+}
+
+function dedupeBrowseProducts(products) {
+  const seen = new Set();
+
+  return products.filter((product) => {
+    const key = `${product.api_name}::${product.cat_no || product.id || ''}`;
+    if (seen.has(key)) {
+      return false;
+    }
+
+    seen.add(key);
+    return true;
+  });
 }
 
 function buildSupabaseUrl(path, params = {}) {
@@ -255,7 +274,8 @@ async function fetchBrowseProducts(limit = 5000) {
 
   const rows = await response.json();
 
-  return rows
+  return dedupeBrowseProducts(
+    rows
     .filter(hasVisibleProductData)
     .map(normalizeProduct)
     .sort((left, right) => {
@@ -266,7 +286,8 @@ async function fetchBrowseProducts(limit = 5000) {
       if (apiComparison !== 0) return apiComparison;
 
       return left.cat_no.localeCompare(right.cat_no, undefined, { sensitivity: 'base' });
-    });
+    })
+  );
 }
 
 export {

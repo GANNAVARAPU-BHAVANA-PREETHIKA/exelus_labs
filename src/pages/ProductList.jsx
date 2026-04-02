@@ -6,6 +6,17 @@ import './ProductList.css';
 
 const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 
+function getUniqueProductCount(items) {
+  const seen = new Set();
+
+  items.forEach((product) => {
+    const key = `${product.api_name || ''}::${product.cat_no || product.id || ''}`;
+    seen.add(key);
+  });
+
+  return seen.size;
+}
+
 const ProductList = () => {
   const location = useLocation();
   const [products, setProducts] = useState([]);
@@ -173,7 +184,12 @@ const ProductList = () => {
         ) : (
           <div className="pl-browse-grid">
             {visibleImpurities.map((impurity) => {
-              const relatedCount = products.filter((product) => product.browse_label?.trim() === impurity).length;
+              const relatedProducts = products.filter(
+                (product) =>
+                  product.browse_letter === selectedLetter &&
+                  product.browse_label?.trim() === impurity
+              );
+              const relatedCount = getUniqueProductCount(relatedProducts);
 
               return (
                 <Link

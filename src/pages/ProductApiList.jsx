@@ -103,7 +103,7 @@ const ProductApiList = () => {
       <div className="pl-header-bar">
         <div className="pl-header-left">
           <h2 className="pl-title">{impurity}</h2>
-          {!loading && <span className="pl-count">{uniqueApiProducts.length} API entries</span>}
+          {!loading && <span className="pl-count">({uniqueApiProducts.length})</span>}
         </div>
       </div>
 
