@@ -10,14 +10,44 @@ import ProductImpurityList from './pages/ProductImpurityList';
 import ProductApiList from './pages/ProductApiList';
 import ProductDetail from './pages/ProductDetail';
 import { ProductProvider } from './context/ProductContext';
-import { useEffect } from 'react';
+import { useEffect, useLayoutEffect } from 'react';
 
 function ScrollToTop() {
   const { pathname, search, hash } = useLocation();
 
-  useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+  useLayoutEffect(() => {
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+
+    const scrollToTop = () => {
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    };
+
+    scrollToTop();
+
+    const frameId = window.requestAnimationFrame(scrollToTop);
+    const timeoutId = window.setTimeout(scrollToTop, 120);
+
+    return () => {
+      window.cancelAnimationFrame(frameId);
+      window.clearTimeout(timeoutId);
+    };
   }, [pathname, search, hash]);
+
+  useEffect(() => {
+    const handlePageShow = () => {
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+    };
+
+    window.addEventListener('pageshow', handlePageShow);
+
+    return () => {
+      window.removeEventListener('pageshow', handlePageShow);
+    };
+  }, []);
 
   return null;
 }
