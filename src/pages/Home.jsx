@@ -11,9 +11,11 @@ import who from '../assets/who.png';
 import accediate3 from '../assets/accediate3.png';
 import accediate4 from '../assets/accediate4.png';
 
+const SLIDE_DURATIONS = [5000, 15000];
+
 const FEATURED_PRODUCT_CAT_NOS = [
   'EXL-C-00039',
-  'EXL-C-00052',
+  'EXL-C-00007',
   'EXL-C-00055',
   'EXL-C-00064',
   'EXL-C-00072',
@@ -36,7 +38,15 @@ const FEATURED_PRODUCT_CAT_NOS = [
   'EXL-C-00374',
   'EXL-C-00397',
   'EXL-C-00417',
-  'EXL-C-00007',
+  'EXL-C-00052',
+  'EXL-C-00449',
+  'EXL-C-00450',
+  'EXL-C-00451',
+  'EXL-C-00452',
+  'EXL-C-00453',
+  'EXL-C-00454',
+  'EXL-C-00455',
+  'EXL-C-00456',
 ];
 
 const Home = () => {
@@ -49,11 +59,13 @@ const Home = () => {
   const slides = [slide1, slide2];
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    const slideDuration = SLIDE_DURATIONS[currentSlide] ?? 7000;
+    const timeout = window.setTimeout(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 7000);
-    return () => clearInterval(interval);
-  }, [slides.length]);
+    }, slideDuration);
+
+    return () => window.clearTimeout(timeout);
+  }, [currentSlide, slides.length]);
 
   useEffect(() => {
     let isMounted = true;
