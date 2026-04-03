@@ -17,7 +17,7 @@ const ProductCard = ({ product, displayName }) => {
     { label: 'Molecular Formula', value: product.molecular_formula },
     { label: 'Molecular Weight', value: product.molecular_weight },
     { label: 'Storage', value: product.storage },
-    { label: 'Synonims', value: product.synonims || product.synonyms },
+    { label: 'Synonyms', value: product.synonims || product.synonyms },
     { label: 'Availability', value: product.availability, isBadge: true },
   ];
 
