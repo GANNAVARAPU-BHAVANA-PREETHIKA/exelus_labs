@@ -187,7 +187,7 @@ const Navbar = () => {
 
         <ul className={menuOpen ? 'show' : ''}>
           <li>
-            <Link to="/home" onClick={handleMenuItemClick}>
+            <Link to="/" onClick={handleMenuItemClick}>
               Home
             </Link>
           </li>

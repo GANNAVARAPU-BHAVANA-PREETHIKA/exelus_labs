@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import Home from './pages/Home';
@@ -60,7 +60,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/home" element={<Home />} />
+          <Route path="/home" element={<Navigate to="/" replace />} />
           <Route path="/products" element={<ProductList />} />
           <Route path="/products/letter/:letter" element={<ProductImpurityList />} />
           <Route path="/products/letter/:letter/impurity/:impurityName" element={<ProductApiList />} />
@@ -68,6 +68,7 @@ function App() {
           <Route path="/services" element={<CustomSynthesis />} />
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/contact-us" element={<ContactUs />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
         <Footer />
       </BrowserRouter>
